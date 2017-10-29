@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BA410FD6-68BA-4B8D-BA7D-4F200B454630}</ProjectGuid>
+    <ProjectGuid>{D719353C-87BD-4FEF-B7BC-4FDE844E6D7C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InfrastructureData</RootNamespace>
-    <AssemblyName>InfrastructureData</AssemblyName>
+    <RootNamespace>EntityServices</RootNamespace>
+    <AssemblyName>EntityServices</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,6 +39,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,7 +49,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContactRepository.cs" />
+    <Compile Include="Migrations\201710291919164_AddContacts.cs" />
+    <Compile Include="Migrations\201710291919164_AddContacts.Designer.cs">
+      <DependentUpon>201710291919164_AddContacts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710292015229_AddPhoneNumbers.cs" />
+    <Compile Include="Migrations\201710292015229_AddPhoneNumbers.Designer.cs">
+      <DependentUpon>201710292015229_AddPhoneNumbers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\PhoneNumber.cs" />
+    <Compile Include="Services\IContactRepository.cs" />
+    <Compile Include="Context\PhoneEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,10 +69,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EntityServices\EntityServices.csproj">
-      <Project>{d719353c-87bd-4fef-b7bc-4fde844e6d7c}</Project>
-      <Name>EntityServices</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Migrations\201710291919164_AddContacts.resx">
+      <DependentUpon>201710291919164_AddContacts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710292015229_AddPhoneNumbers.resx">
+      <DependentUpon>201710292015229_AddPhoneNumbers.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

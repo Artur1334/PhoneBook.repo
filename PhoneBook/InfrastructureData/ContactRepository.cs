@@ -1,22 +1,21 @@
-﻿using EntitiesServices.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EntitiesServices.Entities;
 using System.Data.Entity;
+using EntityServices;
 
 namespace InfrastructureData
 {
     public class ContactRepository : IContactRepository
 
     {
-        private PhoneBookContext PhoneBookContext;
+        private PhoneEntity PhoneBookContext;
         private DbSet<Contact> _dbset;
         public ContactRepository()
         {
-            this.PhoneBookContext = new PhoneBookContext();
+            this.PhoneBookContext = new PhoneEntity();
             this._dbset = PhoneBookContext.Set<Contact>();
         }
 //CREATE

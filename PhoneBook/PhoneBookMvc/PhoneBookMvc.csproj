@@ -142,7 +142,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\EnterController.cs" />
+    <Compile Include="Controllers\PhoneBookHomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -151,7 +152,52 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\custom.css" />
+    <Content Include="Content\css\font.css" />
+    <Content Include="Content\css\style.blue.css" />
+    <Content Include="Content\css\style.default.css" />
+    <Content Include="Content\css\style.green.css" />
+    <Content Include="Content\css\style.pink.css" />
+    <Content Include="Content\css\style.red.css" />
+    <Content Include="Content\css\style.sea.css" />
+    <Content Include="Content\css\style.violet.css" />
+    <Content Include="Content\icons-reference\fonts\dark-dashboard.svg" />
+    <Content Include="Content\icons-reference\icons-reference.html" />
+    <Content Include="Content\icons-reference\styles.css" />
+    <Content Include="Content\img\avatar-1.jpg" />
+    <Content Include="Content\img\avatar-2.jpg" />
+    <Content Include="Content\img\avatar-3.jpg" />
+    <Content Include="Content\img\avatar-4.jpg" />
+    <Content Include="Content\img\avatar-5.jpg" />
+    <Content Include="Content\img\avatar-6.jpg" />
+    <Content Include="Content\img\bg.jpeg" />
+    <Content Include="Content\img\favicon.ico" />
+    <Content Include="Content\img\template-mac.png" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\vendor\chart.js\Chart.bundle.js" />
+    <Content Include="Content\vendor\chart.js\Chart.bundle.min.js" />
+    <Content Include="Content\vendor\chart.js\Chart.js" />
+    <Content Include="Content\vendor\chart.js\Chart.min.js" />
+    <Content Include="Content\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\vendor\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Content\vendor\jquery.cookie\jquery.cookie.js" />
+    <Content Include="Content\vendor\jquery.cookie\MIT-LICENSE.txt" />
+    <Content Include="Content\vendor\jquery\core.js" />
+    <Content Include="Content\vendor\jquery\jquery.js" />
+    <Content Include="Content\vendor\jquery\jquery.min.js" />
+    <Content Include="Content\vendor\jquery\jquery.slim.js" />
+    <Content Include="Content\vendor\jquery\jquery.slim.min.js" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fonts\dark-dashboard.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -160,6 +206,19 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="fonts\fonts\dark-dashboard.eot" />
+    <Content Include="fonts\fonts\dark-dashboard.ttf" />
+    <Content Include="fonts\fonts\dark-dashboard.woff" />
+    <Content Include="Content\icons-reference\fonts\dark-dashboard.eot" />
+    <Content Include="Content\icons-reference\fonts\dark-dashboard.ttf" />
+    <Content Include="Content\icons-reference\fonts\dark-dashboard.woff" />
+    <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\vendor\jquery.cookie\component.json" />
+    <Content Include="Content\vendor\jquery.cookie\cookie.jquery.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -168,6 +227,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\charts-custom.js" />
+    <Content Include="Scripts\js\charts-home.js" />
+    <Content Include="Scripts\js\front.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -182,12 +244,17 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\PhoneBookHome\About.cshtml" />
+    <Content Include="Views\PhoneBookHome\Contact.cshtml" />
+    <Content Include="Views\PhoneBookHome\Index.cshtml" />
+    <Content Include="Views\Enter\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\vendor\chart.js\docs\" />
+    <Folder Include="Content\vendor\font-awesome\less\" />
+    <Folder Include="Content\vendor\font-awesome\scss\" />
+    <Folder Include="Content\vendor\jquery.cookie\test\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
