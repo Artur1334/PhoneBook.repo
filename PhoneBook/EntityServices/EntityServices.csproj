@@ -63,6 +63,7 @@
     <Compile Include="Services\IContactRepository.cs" />
     <Compile Include="Context\PhoneEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IPhoneNumberReposirory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

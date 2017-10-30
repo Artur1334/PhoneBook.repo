@@ -1,30 +1,29 @@
-﻿using System;
+﻿using EntityServices.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Entity;
+using EntityServices.Models;
 using EntityServices;
+using System.Data.Entity;
 
 namespace InfrastructureData
 {
-    public class ContactRepository : IContactRepository
-
+    public class PhoneNumberReposirory : IPhoneNumberReposirory
     {
         private PhoneEntity _phoneentity;
-        private DbSet<Contact> _dbset;
-        public ContactRepository()
+        private DbSet<PhoneNumber> _dbset;
+        public PhoneNumberReposirory()
         {
             this._phoneentity = new PhoneEntity();
-            this._dbset = _phoneentity.Set<Contact>();
+            this._dbset = _phoneentity.Set<PhoneNumber>();
         }
-//CREATE
-        public void Create(Contact contact)
+        public void Create(PhoneNumber phonnumber)
         {
-            _dbset.Add(contact);
+            _dbset.Add(phonnumber);
             _phoneentity.SaveChanges();
-        }
-
+        }   
 //SAVE
         public void Save()
         {
@@ -38,27 +37,24 @@ namespace InfrastructureData
             }
         }
 //SELECT
-        public Contact Select(int? id)
+        public PhoneNumber Select(int? id)
         {
             return _dbset.Find(id);
         }
 //SELECTALL
-        public IEnumerable<Contact> SelectAll()
+        public IEnumerable<PhoneNumber> SelectAll()
         {
             return _dbset.ToList();
         }
-        
 //UPDATE
-        public void Update(Contact contact)
+        public void Update(PhoneNumber item)
         {
-            _dbset.Attach(contact);
-
-            _phoneentity.Entry(contact).State = EntityState.Modified;
+            throw new NotImplementedException();
         }
 //DELETE
         public void Delete(int? id)
         {
-            Contact DeleteInPhoneBook = _dbset.Find(id);
+            PhoneNumber DeleteInPhoneBook = _dbset.Find(id);
             _dbset.Remove(DeleteInPhoneBook);
         }
 //DISPOSE
@@ -66,6 +62,5 @@ namespace InfrastructureData
         {
             GC.SuppressFinalize(this);
         }
-
     }
 }
