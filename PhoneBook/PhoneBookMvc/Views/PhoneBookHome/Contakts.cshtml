@@ -1,0 +1,34 @@
+﻿@model IEnumerable<PhoneBookMvc.Models.ContactViewModel>
+
+@{
+    ViewBag.Title = "Contakts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Contakts</h2>
+<hr />
+@foreach (var item in Model)
+{
+    <div class="public-user-block block">
+        <div class="row d-flex align-items-center">
+            <div class="col-lg-4 d-flex align-items-center">
+                <div class="avatar"> <img src="~/Content/img/avatar-1.jpg" alt="..." class="img-fluid"></div><p>
+                  <strong class="d-block">@item.FirstName  @item.LastName</strong><span class="d-block">@Html.DisplayFor(modelItem => item.Email)</span></p>
+                </div>
+            <div class="col-lg-4 text-center">
+                <a href="@Url.Action("PhoneBookHome", "Depositors",new { Id=item.ContactId},null)" class="btn btn-primary btn-success">Call<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+            </div>
+            <div class="col-lg-4">
+                <div class="details d-flex">
+                    <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Default text here</a>
+                    @*<div class="item"><i class="glyphicon glyphicon-trash"></i><strong>110</strong></div>*@
+                    <div class="item"><i class="fa fa-gg"></i><strong>200</strong></div>
+                    <div class="item"><i class="fa fa-gg"></i><strong>100</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+}
+

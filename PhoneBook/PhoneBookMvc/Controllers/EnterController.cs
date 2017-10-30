@@ -11,6 +11,7 @@ namespace PhoneBookMvc.Controllers
         // GET: Enter
         public ActionResult Index()
         {
+         
             return View();
         }
 
