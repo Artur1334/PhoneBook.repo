@@ -12,18 +12,22 @@
 {
     <div class="public-user-block block">
         <div class="row d-flex align-items-center">
-            <div class="col-lg-4 d-flex align-items-center">
+            <div class="col-lg-4 col-mg-4 col-sm-9 d-flex align-items-center">
                 <div class="avatar"> <img src="~/Content/img/avatar-1.jpg" alt="..." class="img-fluid"></div><p>
-                  <strong class="d-block">@item.FirstName  @item.LastName</strong><span class="d-block">@Html.DisplayFor(modelItem => item.Email)</span></p>
-                </div>
-            <div class="col-lg-4 text-center">
-                <a href="@Url.Action("PhoneBookHome", "Call",new { Id=item.ContactId},null)" class="btn btn-primary btn-success">Call<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+                    <strong class="d-block">@item.FirstName  @item.LastName</strong><span class="d-block">@Html.DisplayFor(modelItem => item.Email)</span>
+                </p>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3 col-md-3 col-sm-3 details d-flex">
+                <a href="@Url.Action("PhoneBookHome", "Edit",new { Id=item.ContactId},null)" class="btn"><img src="~/Content/img/ic_mode_edit_white_24dp_1x.png" /></a>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-9 text-center">
+                <a href="@Url.Action("PhoneBookHome", "Call",new { Id=item.ContactId},null)" class="btn btn-primary btn-success"><img style="margin-right:5px;" src="~/Content/img/ic_call_white_24dp_1x.png" />Call</a>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-3">
                 <div class="details d-flex">
-                    <a href="@Url.Action("PhoneBookHome", "Edit",new { Id=item.ContactId},null)" class="btn btn-info"><span class="glyphicon glyphicon-trash"></span> Edit</a>
-                    <div class="item"><i class="fa fa-gg"></i><strong></strong></div>
-                    <a href="@Url.Action("PhoneBookHome", "Deletei",new { Id=item.ContactId},null)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                    
+                    <a href="@Url.Action("PhoneBookHome", "Deletei",new { Id=item.ContactId},null)" class="btn btn-danger"><img src="~/Content/img/ic_delete_sweep_black_24dp_1x.png" /></a>
                 </div>
             </div>
         </div>

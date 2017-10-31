@@ -192,6 +192,9 @@
     <Content Include="Content\img\bg.jpeg" />
     <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\HovhannisyanA.jpg" />
+    <Content Include="Content\img\ic_call_white_24dp_1x.png" />
+    <Content Include="Content\img\ic_delete_sweep_black_24dp_1x.png" />
+    <Content Include="Content\img\ic_mode_edit_white_24dp_1x.png" />
     <Content Include="Content\img\template-mac.png" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.min.css" />
