@@ -23,24 +23,47 @@ namespace PhoneBookMvc.Controllers
             return View(bankVM);
         }
 
+        // GET: PhoneBookHomeController/Index
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        // GET: PhoneBookHomeController/Create
+        public ActionResult Create()
         {
-            ViewBag.Message = "Your application description page.";
+            return View();
+        }
+
+        // POST: PhoneBookHomeController/Create
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Create(/*[*//*Bind(Include = "BankID,BankName,Deleted")]*/Contact c)
+        {
+            if (ModelState.IsValid)
+            {
+                //_repository.Create(bank);
+                //_repository.Save();
+                return RedirectToAction("Index");
+            }
 
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
+        //public ActionResult About()
+        //{
+        //    ViewBag.Message = "Your application description page.";
+
+        //    return View();
+        //}
+
+        //public ActionResult Contact()
+        //{
+        //    ViewBag.Message = "Your contact page.";
+
+        //    return View();
+        //}
         protected override void Dispose(bool disposing)
         {
             if (disposing)
