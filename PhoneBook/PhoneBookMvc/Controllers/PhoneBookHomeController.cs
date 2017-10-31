@@ -1,4 +1,6 @@
 ﻿using EntityServices;
+using EntityServices.Models;
+using EntityServices.Services;
 using InfrastructureData;
 using PhoneBookMvc.Mappings;
 using PhoneBookMvc.Models;
@@ -12,14 +14,16 @@ namespace PhoneBookMvc.Controllers
 {
     public class PhoneBookHomeController : Controller
     {
-        protected IContactRepository _repository;
-        public PhoneBookHomeController(ContactRepository repository)
+        protected IContactRepository _contactrepository;
+        protected IPhoneNumberReposirory _phonenumberrepository;
+        public PhoneBookHomeController(ContactRepository repository, IPhoneNumberReposirory phonenumberrepository)
         {
-            this._repository = repository;
+            this._contactrepository = repository;
+            this._phonenumberrepository = phonenumberrepository;
         }
         public ActionResult Contakts()
         {
-            List<ContactViewModel> bankVM = _repository.SelectAll().To_Contact_View_Model().ToList();
+            List<ContactViewModel> bankVM = _contactrepository.SelectAll().To_Contact_View_Model().ToList();
             return View(bankVM);
         }
 
@@ -37,17 +41,26 @@ namespace PhoneBookMvc.Controllers
 
         // POST: PhoneBookHomeController/Create
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public ActionResult Create(/*[*//*Bind(Include = "BankID,BankName,Deleted")]*/Contact c)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ContactCreateViewModel contactcreatevm)
         {
             if (ModelState.IsValid)
             {
-                //_repository.Create(bank);
-                //_repository.Save();
-                return RedirectToAction("Index");
+                Contact _contact = ContactsMapper.To_Contact_Create_ViewModel(contactcreatevm);
+                int val = 0;
+                _contactrepository.Create(_contact, ref val);
+                _contactrepository.Save();
+               List<PhoneNumber> _phonenumber = PhoneNumberMapper.To_PhoneNumber_Create_ViewModel(contactcreatevm, val ).ToList();
+                foreach (PhoneNumber phonItem in _phonenumber)
+                {
+                    _phonenumberrepository.Create(phonItem);
+                    _phonenumberrepository.Save();
+                }
+
+                return RedirectToAction("Contakts");
             }
 
-            return View();
+            return View("Create");
         }
 
 
@@ -68,8 +81,10 @@ namespace PhoneBookMvc.Controllers
         {
             if (disposing)
             {
-                _repository.Dispose();
-                _repository = null;
+                _contactrepository.Dispose();
+                _contactrepository = null;
+                _phonenumberrepository.Dispose();
+                _phonenumberrepository = null;
             }
             base.Dispose(disposing);
         }

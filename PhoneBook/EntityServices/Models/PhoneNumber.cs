@@ -13,7 +13,7 @@ namespace EntityServices.Models
         public int PhoneNumberId { get; set; }
 
         [Required]
-        [Range(9,20)]
+        [MaxLength(20)]
         public string Number{ get; set; }
 
         public Contact Contact { get; set; }

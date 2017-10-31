@@ -15,7 +15,7 @@ namespace PhoneBookMvc.Mappings
             ContactViewModel VMContact = new ContactViewModel()
             {
                 Address=contact.Address,
-                ContactId=contact.ContactId,
+                //ContactId=contact.ContactId,
                 Email=contact.Email,
                 FirstName=contact.FirstName,
                 ImagePath=contact.ImagePath,
@@ -32,5 +32,18 @@ namespace PhoneBookMvc.Mappings
             }
             return contactVM;
         }
+        public static Contact To_Contact_Create_ViewModel(this ContactCreateViewModel contactcreate)
+        {
+            Contact contact = new Contact()
+            {
+              Address= contactcreate.contactvm.Address,
+              Email= contactcreate.contactvm.Email,
+              FirstName=contactcreate.contactvm.FirstName,
+              ImagePath=contactcreate.contactvm.ImagePath,
+              LastName=contactcreate.contactvm.LastName
+            };
+            return contact;
+        }
+
     }
 }

@@ -9,14 +9,16 @@ namespace PhoneBookMvc.Models
     public class ContactViewModel
     {
 
-        [Required]
-        public int ContactId { get; set; }
+       
+        public Nullable<int> ContactId { get; set; }
 
         [Required]
         [MaxLength(50)]
+        [Display(Name ="Name")]
         public string FirstName { get; set; }
 
         [MaxLength(50)]
+        [Display(Name = "Surname")]
         public string LastName { get; set; }
 
         [EmailAddress]
@@ -27,5 +29,6 @@ namespace PhoneBookMvc.Models
 
         [MaxLength(255)]
         public string Address { get; set; }
+
     }
 }

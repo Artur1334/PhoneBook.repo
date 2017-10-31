@@ -57,6 +57,10 @@
     <Compile Include="Migrations\201710292015229_AddPhoneNumbers.Designer.cs">
       <DependentUpon>201710292015229_AddPhoneNumbers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710312122199_ChangePhoneNumber.cs" />
+    <Compile Include="Migrations\201710312122199_ChangePhoneNumber.Designer.cs">
+      <DependentUpon>201710312122199_ChangePhoneNumber.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\PhoneNumber.cs" />
@@ -75,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710292015229_AddPhoneNumbers.resx">
       <DependentUpon>201710292015229_AddPhoneNumbers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710312122199_ChangePhoneNumber.resx">
+      <DependentUpon>201710312122199_ChangePhoneNumber.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

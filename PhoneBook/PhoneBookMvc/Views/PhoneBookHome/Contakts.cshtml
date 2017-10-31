@@ -17,14 +17,13 @@
                   <strong class="d-block">@item.FirstName  @item.LastName</strong><span class="d-block">@Html.DisplayFor(modelItem => item.Email)</span></p>
                 </div>
             <div class="col-lg-4 text-center">
-                <a href="@Url.Action("PhoneBookHome", "Depositors",new { Id=item.ContactId},null)" class="btn btn-primary btn-success">Call<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+                <a href="@Url.Action("PhoneBookHome", "Call",new { Id=item.ContactId},null)" class="btn btn-primary btn-success">Call<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
             </div>
             <div class="col-lg-4">
                 <div class="details d-flex">
-                    <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Default text here</a>
-                    @*<div class="item"><i class="glyphicon glyphicon-trash"></i><strong>110</strong></div>*@
-                    <div class="item"><i class="fa fa-gg"></i><strong>200</strong></div>
-                    <div class="item"><i class="fa fa-gg"></i><strong>100</strong></div>
+                    <a href="@Url.Action("PhoneBookHome", "Edit",new { Id=item.ContactId},null)" class="btn btn-info"><span class="glyphicon glyphicon-trash"></span> Edit</a>
+                    <div class="item"><i class="fa fa-gg"></i><strong></strong></div>
+                    <a href="@Url.Action("PhoneBookHome", "Deletei",new { Id=item.ContactId},null)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
                 </div>
             </div>
         </div>

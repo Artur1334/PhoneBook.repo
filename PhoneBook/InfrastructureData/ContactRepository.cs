@@ -19,10 +19,13 @@ namespace InfrastructureData
             this._dbset = _phoneentity.Set<Contact>();
         }
 //CREATE
-        public void Create(Contact contact)
+        public void Create(Contact contact, ref int newid)
         {
+            
             _dbset.Add(contact);
             _phoneentity.SaveChanges();
+
+           newid = contact.ContactId;
         }
 
 //SAVE

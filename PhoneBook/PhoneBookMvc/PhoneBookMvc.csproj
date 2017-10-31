@@ -164,7 +164,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mappings\ContactsMapper.cs" />
+    <Compile Include="Mappings\PhoneNumberMapper.cs" />
+    <Compile Include="Models\ContactCreateViewModel.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
+    <Compile Include="Models\PhoneNumberViewModel.cs" />
     <Compile Include="Ninject\DependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
