@@ -15,13 +15,17 @@
     <link rel="stylesheet" href="~/Content/css/style.default.css" id="theme-stylesheet">
     <link rel="stylesheet" href="~/Content/css/custom.css">
     <link rel="shortcut icon" href="~/Content/img/favicon.ico">
+
+ 
+
+
 </head>
 <body>
-    <header class="header">
+    <header class="header ">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid d-flex align-items-center justify-content-between">
                 <div class="navbar-header">
-                    <a href="@Url.Action("Contakts", "PhoneBookHome")" class="navbar-brand">
+                    <a href="@Url.Action("Contacts", "PhoneBookHome")" class="navbar-brand">
                         <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Phone</strong><strong>Book</strong></div>
                         <div class="brand-text brand-sm"><strong class="text-primary">P</strong><strong>B</strong></div>
                     </a>
@@ -44,10 +48,11 @@
             </div>
             <span class="heading">Main</span>
             <ul class="list-unstyled">
-                <li class="active"><a href="@Url.Action("Contakts","PhoneBookHome")">Contacts</a></li>
+                <li class="active"><a href="@Url.Action("Contacts","PhoneBookHome")">Contacts</a></li>
                 <li ><a href="@Url.Action("Create","PhoneBookHome")">Create New Contact </a></li>
             </ul>
         </nav>
+
         <div class="page-content">
             <div class="page-header">
                 <div class="container-fluid"></div>
@@ -63,6 +68,10 @@
             </section>
         </div>
     </div>
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"> </script>
     <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>

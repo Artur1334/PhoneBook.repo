@@ -10,7 +10,7 @@ namespace PhoneBookMvc.Models
     {
 
        
-        public Nullable<int> ContactId { get; set; }
+        public int ContactId { get; set; }
 
         [Required]
         [MaxLength(50)]

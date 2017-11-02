@@ -49,7 +49,9 @@ namespace InfrastructureData
 //UPDATE
         public void Update(PhoneNumber item)
         {
-            throw new NotImplementedException();
+            _dbset.Attach(item);
+
+            _phoneentity.Entry(item).State = EntityState.Modified;
         }
 //DELETE
         public void Delete(int? id)

@@ -6,7 +6,9 @@ using PhoneBookMvc.Mappings;
 using PhoneBookMvc.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,31 +17,30 @@ namespace PhoneBookMvc.Controllers
     public class PhoneBookHomeController : Controller
     {
         protected IContactRepository _contactrepository;
+
         protected IPhoneNumberReposirory _phonenumberrepository;
+
         public PhoneBookHomeController(ContactRepository repository, IPhoneNumberReposirory phonenumberrepository)
         {
             this._contactrepository = repository;
             this._phonenumberrepository = phonenumberrepository;
         }
-        public ActionResult Contakts()
+
+        public ActionResult Contacts()
         {
             List<ContactViewModel> bankVM = _contactrepository.SelectAll().To_Contact_View_Model().ToList();
             return View(bankVM);
         }
 
-        // GET: PhoneBookHomeController/Index
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         // GET: PhoneBookHomeController/Create
+
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: PhoneBookHomeController/Create
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ContactCreateViewModel contactcreatevm)
@@ -57,26 +58,78 @@ namespace PhoneBookMvc.Controllers
                     _phonenumberrepository.Save();
                 }
 
-                return RedirectToAction("Contakts");
+                return RedirectToAction("Contacts");
             }
-
             return View("Create");
         }
 
+        // GET: PhoneBookHomeController/Edit
 
-        //public ActionResult About()
-        //{
-        //    ViewBag.Message = "Your application description page.";
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Contact _contact = _contactrepository.Select(id);
+            List<PhoneNumber> _phonenumberlist = _phonenumberrepository.SelectAll().Where(d => d.ContactId == _contact.ContactId).ToList();
+            ContactCreateViewModel contactVM = PhoneNumberMapper.To_Contact_Create_ViewModel(_phonenumberlist);
+            contactVM.contactvm = ContactsMapper.To_Contact_View_Model(_contact);
+            if (contactVM == null)
+            {
+                return HttpNotFound();
+            }
+            return View(contactVM);
+        }
 
-        //    return View();
-        //}
+        // POST: PhoneBookHomeController/Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(/*[Bind(Include = "Number,ContactId,PhoneNumberId")]*/ ContactCreateViewModel contactvmNew)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Contact _con = ContactsMapper.To_Contact_Create_ViewModel(contactvmNew);
+                    _contactrepository.Update(_con);
+                    _contactrepository.Save();
+                    List<PhoneNumber> _phonenumber = PhoneNumberMapper.To_PhoneNumber_Create_ViewModel(contactvmNew, _con.ContactId).ToList();
+                    foreach (PhoneNumber phonItem in _phonenumber)
+                    {
+                       
+                        _phonenumberrepository.Update(phonItem);
+                        _phonenumberrepository.Save();
+                    }
+                    return RedirectToAction("Contacts");
+                }
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError(string.Empty, "Unable to save changes. Try again.");
+            }
+            return View(contactvmNew);
 
-        //public ActionResult Contact()
-        //{
-        //    ViewBag.Message = "Your contact page.";
+        }
+        // GET: PhoneBookHomeController/Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Contact _contact = _contactrepository.Select(id);
+            List<PhoneNumber> _phonenumberlist = _phonenumberrepository.SelectAll().Where(d => d.ContactId == _contact.ContactId).ToList();
+            if (_contact == null)
+            {
+                return HttpNotFound();
+            }
 
-        //    return View();
-        //}
+            return View(_contact);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

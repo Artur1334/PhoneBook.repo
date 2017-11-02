@@ -11,11 +11,10 @@ namespace PhoneBookMvc.Mappings
     {
         public static ContactViewModel To_Contact_View_Model(this Contact contact)
         {
-            //ListDepositType ltd = new ListDepositType();
             ContactViewModel VMContact = new ContactViewModel()
             {
                 Address=contact.Address,
-                //ContactId=contact.ContactId,
+                ContactId=contact.ContactId,
                 Email=contact.Email,
                 FirstName=contact.FirstName,
                 ImagePath=contact.ImagePath,
@@ -36,6 +35,7 @@ namespace PhoneBookMvc.Mappings
         {
             Contact contact = new Contact()
             {
+              ContactId =contactcreate.contactvm.ContactId,
               Address= contactcreate.contactvm.Address,
               Email= contactcreate.contactvm.Email,
               FirstName=contactcreate.contactvm.FirstName,

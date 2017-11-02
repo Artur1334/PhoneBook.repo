@@ -1,0 +1,73 @@
+﻿@model IEnumerable<PhoneBookMvc.Models.ContactViewModel>
+
+@{
+    ViewBag.Title = "Contacts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Contacts</h2>
+<hr />
+@Html.Hidden("item-to-delete", "", new { @id = "item-to-delete" })
+@foreach (var item in Model)
+{
+    <div class="public-user-block block">
+        <div class="row d-flex align-items-center">
+            <div class="col-lg-4 col-mg-4 col-sm-9 d-flex align-items-center">
+                <div class="avatar"> <img src="~/Content/img/avatar-1.jpg" alt="..." class="img-fluid"></div><p>
+                    <strong class="d-block">@item.FirstName  @item.LastName</strong><span class="d-block">@Html.DisplayFor(modelItem => item.Email)</span>
+                </p>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 details d-flex">
+                <a href="@Url.Action( "Edit", "PhoneBookHome",new { Id=item.ContactId},null)" class="btn"><img src="~/Content/img/ic_mode_edit_white_24dp_1x.png" /></a>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-9 text-center">
+                <a href="@Url.Action("Call","PhoneBookHome", new { Id=item.ContactId},null)" class="btn btn-primary btn-success"><img style="margin-right:5px;" src="~/Content/img/ic_call_white_24dp_1x.png" />Call</a>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-3">
+                <div class="details d-flex">
+                    @*<a id="deleteItem" class="deleteItem btn btn-danger" data-path="@item.ContactId" data-target="#basic" data-toggle="modal"><img src="~/Content/img/ic_delete_sweep_black_24dp_1x.png" /></a>*@
+                    <button type="button" class="btn btn-sm blue deleteLead" data-target="#basic" data-toggle="modal" data-id="@item.ContactId">delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+}
+<div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">book Delete Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                Are you Sure!!! You want to delete this Ad?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn blue" id="btnContinueDelete">Continue</button>
+                <button type="button" class="btn default" data-dismiss="modal">Cancel</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+ <script>
+      $(".deletebook").click(function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        $('#item-to-delete').val(id);
+    });
+    $('#btnContinueDelete').click(function() {
+        var id = $('#item-to-delete').val();
+        $.post(@Url.Action("Delete", "PhoneBookHome"), { id: id }, function(data) {
+        alert("data deleted");
+        });
+        });
+
+    
+   </script> 
+
+

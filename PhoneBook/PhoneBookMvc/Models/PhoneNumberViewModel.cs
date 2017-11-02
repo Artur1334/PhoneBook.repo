@@ -8,13 +8,11 @@ namespace PhoneBookMvc.Models
 {
     public class PhoneNumberViewModel
     {
-        [Required]
+        
         public int PhoneNumberId { get; set; }
 
-        [Required]
-        [MinLength(9,ErrorMessage ="Phone number must be at least 9 characters")]
-        [MaxLength(20,ErrorMessage ="Phone number can have maximum 20 characters")]
-        [RegularExpression("[0-9]")]
+        [MinLength(9, ErrorMessage = "Phone number must be at least 9 characters")]
+        [MaxLength(20, ErrorMessage = "Phone number can have maximum 20 characters")]
         public string Number { get; set; }
 
         [Required]

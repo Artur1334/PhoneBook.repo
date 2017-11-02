@@ -266,12 +266,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\PhoneBookHome\About.cshtml" />
-    <Content Include="Views\PhoneBookHome\Contact.cshtml" />
-    <Content Include="Views\PhoneBookHome\Index.cshtml" />
     <Content Include="Views\Enter\Index.cshtml" />
-    <Content Include="Views\PhoneBookHome\Contakts.cshtml" />
+    <Content Include="Views\PhoneBookHome\Contacts.cshtml" />
     <Content Include="Views\PhoneBookHome\Create.cshtml" />
+    <Content Include="Views\PhoneBookHome\Edit.cshtml" />
+    <Content Include="Views\PhoneBookHome\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
