@@ -111,23 +111,28 @@ namespace PhoneBookMvc.Controllers
             return View(contactvmNew);
 
         }
-        // GET: PhoneBookHomeController/Delete
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int? id)
+        //  PhoneBookHomeController/Delete
+
+        public JsonResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+         
+            bool result = false;
             Contact _contact = _contactrepository.Select(id);
-            List<PhoneNumber> _phonenumberlist = _phonenumberrepository.SelectAll().Where(d => d.ContactId == _contact.ContactId).ToList();
-            if (_contact == null)
+            List<PhoneNumber> _phonenumberlist = _phonenumberrepository.SelectAll().Where(d => d.ContactId == id).ToList();
+            if (_contact!=null)
             {
-                return HttpNotFound();
+                foreach (PhoneNumber item in _phonenumberlist)
+                {
+                    _phonenumberrepository.Delete(item.PhoneNumberId);
+                    _phonenumberrepository.Save();
+                }
+                _contactrepository.Delete(id);
+                _contactrepository.Save();
+                result = true;
             }
 
-            return View(_contact);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

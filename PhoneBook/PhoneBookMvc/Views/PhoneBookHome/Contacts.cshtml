@@ -8,10 +8,11 @@
 
 <h2>Contacts</h2>
 <hr />
-@Html.Hidden("item-to-delete", "", new { @id = "item-to-delete" })
+
 @foreach (var item in Model)
 {
-    <div class="public-user-block block">
+
+    <div class="public-user-block block" id="row_@item.ContactId">
         <div class="row d-flex align-items-center">
             <div class="col-lg-4 col-mg-4 col-sm-9 d-flex align-items-center">
                 <div class="avatar"> <img src="~/Content/img/avatar-1.jpg" alt="..." class="img-fluid"></div><p>
@@ -27,47 +28,67 @@
             </div>
             <div class="col-lg-1 col-md-1 col-sm-3">
                 <div class="details d-flex">
-                    @*<a id="deleteItem" class="deleteItem btn btn-danger" data-path="@item.ContactId" data-target="#basic" data-toggle="modal"><img src="~/Content/img/ic_delete_sweep_black_24dp_1x.png" /></a>*@
-                    <button type="button" class="btn btn-sm blue deleteLead" data-target="#basic" data-toggle="modal" data-id="@item.ContactId">delete</button>
+                    <button type="button" class="btn btn-danger" onclick="ConfirmDelete(@item.ContactId)"><img src="~/Content/img/ic_delete_sweep_black_24dp_1x.png" /></button>
                 </div>
             </div>
         </div>
+
     </div>
     <hr />
+    <input type="hidden" id="hidenContactId" />
 }
-<div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true" style="display: none;">
+<div class="modal fade" id="myModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">book Delete Confirmation</h4>
+                <a herf="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">Delete</h4>
             </div>
             <div class="modal-body">
-                Are you Sure!!! You want to delete this Ad?
+                <h4> Are you sure you want to delete</h4>
+                <div style="text-align:center;display:none" id="loaderDiv">
+                    <h1>Loading</h1>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn blue" id="btnContinueDelete">Continue</button>
-                <button type="button" class="btn default" data-dismiss="modal">Cancel</button>
-
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" onclick="DeleteContact()">Confirm</button>
             </div>
         </div>
     </div>
 </div>
 
- <script>
-      $(".deletebook").click(function(e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        $('#item-to-delete').val(id);
-    });
-    $('#btnContinueDelete').click(function() {
-        var id = $('#item-to-delete').val();
-        $.post(@Url.Action("Delete", "PhoneBookHome"), { id: id }, function(data) {
-        alert("data deleted");
-        });
-        });
+@section scripts
+     {
+    <script>
+        var ConfirmDelete = function (ContactId) {
 
-    
-   </script> 
+            $("#hidenContactId").val(ContactId);
+            $("#myModal").modal("show");
+        }
+        var DeleteContact = function () {
+
+            $("#loaderDiv").show();
+
+            var conId = $("#hidenContactId").val();
+
+            $.ajax({
+
+                type: "POST",
+                url: "/PhoneBookHome/Delete",
+                data: { id: conId },
+                success: function (result) {
+                    $("#loaderDiv").hide();
+                    $("#myModal").modal("hide");
+                    $("#row_" + conId).remove();
+                }
+            })
+        }
+    </script>
+}
+
+
+
+
 
 
