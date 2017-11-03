@@ -1,0 +1,15 @@
+﻿@model IEnumerable<EntityServices.Models.PhoneNumber>
+@{
+    ViewBag.Title = "NumberInfo";
+    Layout = null;
+
+}
+
+<div class="container">
+    <h4 style="text-align:center; border-bottom:1px solid #ff0000">Numbers</h4>
+    @foreach (var item in Model)
+    {
+        <p><label>Phone: </label> @item.Number</p>
+        <a @*href="@Url.Action( "Edit", "PhoneBookHome",new { Id=item.ContactId},null)"*@  class="btn btn-primary btn-success"><img style="margin-right:5px;" src="~/Content/img/ic_call_white_24dp_1x.png" />Call</a>
+    }
+</div>

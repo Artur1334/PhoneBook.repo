@@ -271,6 +271,7 @@
     <Content Include="Views\PhoneBookHome\Create.cshtml" />
     <Content Include="Views\PhoneBookHome\Edit.cshtml" />
     <Content Include="Views\PhoneBookHome\Delete.cshtml" />
+    <Content Include="Views\PhoneBookHome\NumberInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

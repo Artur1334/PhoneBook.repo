@@ -28,8 +28,14 @@ namespace PhoneBookMvc.Controllers
 
         public ActionResult Contacts()
         {
-            List<ContactViewModel> bankVM = _contactrepository.SelectAll().To_Contact_View_Model().ToList();
-            return View(bankVM);
+            List<ContactViewModel> cantactsVM = _contactrepository.SelectAll().To_Contact_View_Model().ToList();
+            return View(cantactsVM);
+        }
+
+        public ActionResult NumberInfo(int? id)
+        {
+            List<PhoneNumber> _phonenumberlist = _phonenumberrepository.SelectAll().Where(d => d.ContactId == id).ToList();
+            return View(_phonenumberlist);
         }
 
         // GET: PhoneBookHomeController/Create
