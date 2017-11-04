@@ -121,7 +121,6 @@ namespace PhoneBookMvc.Controllers
 
         public JsonResult Delete(int? id)
         {
-         
             bool result = false;
             Contact _contact = _contactrepository.Select(id);
             List<PhoneNumber> _phonenumberlist = _phonenumberrepository.SelectAll().Where(d => d.ContactId == id).ToList();
@@ -136,8 +135,6 @@ namespace PhoneBookMvc.Controllers
                 _contactrepository.Save();
                 result = true;
             }
-
-
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

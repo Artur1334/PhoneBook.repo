@@ -10,6 +10,13 @@
     @foreach (var item in Model)
     {
         <p><label>Phone: </label> @item.Number</p>
-        <a @*href="@Url.Action( "Edit", "PhoneBookHome",new { Id=item.ContactId},null)"*@  class="btn btn-primary btn-success"><img style="margin-right:5px;" src="~/Content/img/ic_call_white_24dp_1x.png" />Call</a>
+        <a href="@Url.Action( "Calling", "Call",new { num=item.Number},null)"  class="btn btn-primary btn-success"><img style="margin-right:5px;" src="~/Content/img/ic_call_white_24dp_1x.png" />Call</a>
     }
 </div>
+
+
+
+
+
+
+
