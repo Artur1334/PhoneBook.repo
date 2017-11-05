@@ -13,18 +13,18 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        @Html.ValidationSummary()
-        @Html.Label("Icon")<br />
+        @*<div class="form-group">
+            @Html.ValidationSummary()
+            @Html.Label("Icon")<br />
+            <img id="output" width="75" height="75" src="~/Content/img/avatar-5.jpg" />
+            @Html.TextBox("Ico", "", new { type = "file", onchange = "loadFile(event)", style = "visibility:hidden;" })
 
-        <img id="output" width="75" height="75" src="~/Content/Images/Banks_Icons/DefaultBankIco.jpg" />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        @Html.TextBox("Ico", "", new { type = "file", onchange = "loadFile(event)", style = "visibility:hidden;" })
+            <button type="button" class="btn_add btn btn-xs" onclick="document.getElementById('Ico').click()"><img class="middleIco" src="~/Content/Icons/change-ico.png" /> Change icon</button>
 
-        <button type="button" class="btn_add btn btn-xs" onclick="document.getElementById('Ico').click()"><img class="middleIco" src="~/Content/Icons/change-ico.png" /> Change icon</button>
-        <button type="button" class="btn_cancel btn btn-xs" onclick='document.getElementById("output").src ="/Content/Images/Banks_Icons/DefaultBankIco.jpg"'><img class="middleIco" src="~/Content/Icons/delete-ico.png" />Set default ico</button>
-        <br />
-        <br />
-        <button type="button" class="btn_cancel btn btn-xs" onclick="history.back()"><img class="smallIco" src="~/Content/Icons/cancel-ico.png" /> Cancel</button>
+            <button type="button" class="btn_cancel btn btn-xs" onclick="history.back()"><img class="smallIco" src="~/Content/Icons/cancel-ico.png" /> Cancel</button>
+        </div>*@
 
         <div class="form-group">
             @Html.Label("Number", htmlAttributes: new { @class = "control-label col-md-2" })

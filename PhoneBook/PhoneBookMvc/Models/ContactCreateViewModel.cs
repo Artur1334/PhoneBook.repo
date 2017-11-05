@@ -12,7 +12,6 @@ namespace PhoneBookMvc.Models
         public ContactViewModel contactvm { get; set; }
 
         [Required(ErrorMessage = "Phone number is Required")]
-
         public PhoneNumberViewModel phonenumber1 { get; set; }
 
         public PhoneNumberViewModel phonenumber2 { get; set; }

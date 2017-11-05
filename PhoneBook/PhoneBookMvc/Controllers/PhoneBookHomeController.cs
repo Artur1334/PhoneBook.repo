@@ -26,11 +26,45 @@ namespace PhoneBookMvc.Controllers
             this._phonenumberrepository = phonenumberrepository;
         }
 
+        // GET: PhoneBookHomeController/Contact
+
         public ActionResult Contacts()
         {
             List<ContactViewModel> cantactsVM = _contactrepository.SelectAll().To_Contact_View_Model().ToList();
-            return View(cantactsVM);
+            return View(cantactsVM.OrderBy(a=>a.FirstName));
         }
+
+        // POST: PhoneBookHomeController/Contact
+
+        [HttpPost]
+        public ActionResult Contacts(string searchTerm)
+        {
+            List<ContactViewModel> cantactsVM = new List<ContactViewModel>();
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                cantactsVM = _contactrepository.SelectAll().To_Contact_View_Model().ToList();
+            }
+            else
+            {
+                cantactsVM= _contactrepository.SelectAll().Where(a=>a.FirstName.ToUpper().StartsWith(searchTerm.ToUpper())).To_Contact_View_Model().ToList();
+            }
+            
+            return View(cantactsVM.OrderBy(a=>a.FirstName));
+        }
+
+        // POST: PhoneBookHomeController/Autocomplete
+
+        [HttpPost]
+        public JsonResult Autocomplete(string Prefix)
+        {
+            List<string> str;
+
+            str = _contactrepository.SelectAll().Where(a => a.FirstName.ToUpper().StartsWith(Prefix.ToUpper())).Select(b => b.FirstName).ToList();   
+            
+            return Json(str, JsonRequestBehavior.AllowGet);
+        }
+
+        // POST: PhoneBookHomeController/NumberInfo
 
         public ActionResult NumberInfo(int? id)
         {

@@ -8,7 +8,6 @@ namespace PhoneBookMvc.Models
 {
     public class PhoneNumberViewModel
     {
-        
         public int PhoneNumberId { get; set; }
 
         [MinLength(9, ErrorMessage = "Phone number must be at least 9 characters")]

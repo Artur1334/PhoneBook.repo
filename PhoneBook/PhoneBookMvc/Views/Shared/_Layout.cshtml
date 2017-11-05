@@ -1,25 +1,26 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-
-    
-        <link rel="stylesheet" href="css/font.css">
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>PhoneBook</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="robots" content="all,follow">
-        <link rel="stylesheet" href="~/Content/vendor/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="~/Content/vendor/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="~/Content/css/font.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
-        <link rel="stylesheet" href="~/Content/css/style.default.css" id="theme-stylesheet">
-        <link rel="stylesheet" href="~/Content/css/custom.css">
-        <link rel="shortcut icon" href="~/Content/img/favicon.ico">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PhoneBook</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="all,follow">
+    <link rel="stylesheet" href="~/Content/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/css/font.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
+    <link rel="stylesheet" href="~/Content/css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="~/Content/css/custom.css">
+    <link rel="shortcut icon" href="~/Content/img/favicon.ico">    
+    <link href="~/Content/themes/base/all.css" rel="stylesheet"  />
+   
     @*@Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")*@
+        @Scripts.Render("~/bundles/modernizr")*@
 </head>
+
+
 <body>
     <header class="header ">
         <nav class="navbar navbar-expand-lg">
@@ -49,7 +50,7 @@
             <span class="heading">Main</span>
             <ul class="list-unstyled">
                 <li class="active"><a href="@Url.Action("Contacts","PhoneBookHome")">Contacts</a></li>
-                <li ><a href="@Url.Action("Create","PhoneBookHome")">Create New Contact </a></li>
+                <li><a href="@Url.Action("Create","PhoneBookHome")">Create New Contact </a></li>
             </ul>
         </nav>
 
@@ -59,11 +60,11 @@
             </div>
             <section class="no-padding-top no-padding-bottom">
                 <div class="container-fluid">
-                            <div class="statistic-block block">
-                                <div class="container body-content">
-                                    @RenderBody()
-                               </div>
-                      </div>
+                    <div class="statistic-block block">
+                        <div class="container body-content">
+                            @RenderBody()
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -83,5 +84,8 @@
     <script src="~/Content/vendor/chart.js/Chart.min.js"></script>
     <script src="~/Scripts/js/charts-home.js"></script>
     <script src="~/Scripts/js/front.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js" ></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+ 
 </body>
 </html>

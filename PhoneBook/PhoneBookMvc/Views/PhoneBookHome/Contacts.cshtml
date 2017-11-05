@@ -5,27 +5,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
 <div class="search-panel">
     <div class="row d-flex align-items-center">
-        <div class="col-lg-3 col-md-3 col-sm-3 details d-flex">
+        <div class="col-lg-4 col-md-4 col-sm-4 details d-flex">
             <h2 style="text-align:center; border-bottom:1px solid #f42c2c">Contacts</h2>
         </div>
 
-        <div class="col-lg-4 col-md-4 col-sm-9 ">
-            <div class="form-group">
-                <input type="search" id="iii"  placeholder="By Name" onchange="funk()">
-                <input type="button" id="filterButton" name=" search" value="Filter">
-            </div>
+        <div class="col-lg-5 col-md-5 col-sm-5 ">
+
+            @using (@Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+
+                <div class="form-group">
+                    <hr style="text-align:center; border-bottom:1px solid #f42c2c" />
+                    <b>By Name</b>
+                    @Html.TextBox("searchTerm", null, new { id = "txtSearch" })
+                    <button type="submit" value="Search" class="btn btn-primary btn-info"> <img style="margin-right:5px;" src="~/Content/img/ic_search_white_24dp_1x.png" />Search</button>
+                    <hr style="text-align:center; border-bottom:1px solid #f42c2c" />
+                </div>
+
+            }
         </div>
     </div>
 </div>
 
 <hr style="text-align:center; border-bottom:1px solid #ffffff" />
 
-    @foreach (var item in Model)
-    {
+@foreach (var item in Model)
+{
+    <div id="row_@item.ContactId">
         <hr style="border-bottom:1px solid #ffffff" />
-        <div class="public-user-block block" id="row_@item.ContactId">
+        <div class="public-user-block block">
             <div class="row d-flex align-items-center">
                 <div class="col-lg-4 col-mg-4 col-sm-9 d-flex align-items-center">
                     <div class="avatar"> <img src="~/Content/img/avatar-1.jpg" alt="..." class="img-fluid"></div><p>
@@ -49,7 +63,9 @@
         </div>
         <hr style="border-bottom:1px solid #ffffff" />
         <input type="hidden" id="hidenContactId" />
-    }
+    </div>
+}
+
 
 <div class="modal fade" id="myModal">
     <div class="modal-dialog">
@@ -122,9 +138,30 @@
                 return set_data
             }
         });
-       
     </script>
+    <script>
+        $(document).ready(function () {
+            $("#txtSearch").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/PhoneBookHome/Autocomplete",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item, value: item };
+                            }))
 
+                        }
+                    })
+                },
+                messages: {
+                    noResults: "", results: ""
+                }
+            });
+        })
+    </script>
 }
 
 

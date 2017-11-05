@@ -8,8 +8,6 @@ namespace PhoneBookMvc.Models
 {
     public class ContactViewModel
     {
-
-       
         public int ContactId { get; set; }
 
         [Required]
