@@ -190,6 +190,7 @@
     <Content Include="Content\img\avatar-5.jpg" />
     <Content Include="Content\img\avatar-6.jpg" />
     <Content Include="Content\img\bg.jpeg" />
+    <Content Include="Content\img\defaultIcon.png" />
     <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\HovhannisyanA.jpg" />
     <Content Include="Content\img\ic_call_white_24dp_1x.png" />
@@ -325,6 +326,7 @@
     <Folder Include="Content\vendor\font-awesome\less\" />
     <Folder Include="Content\vendor\font-awesome\scss\" />
     <Folder Include="Content\vendor\jquery.cookie\test\" />
+    <Folder Include="UploadImg\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

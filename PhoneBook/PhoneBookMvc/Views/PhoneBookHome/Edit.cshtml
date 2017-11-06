@@ -7,14 +7,37 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "PhoneBookHome", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <hr />
 
     <div class="form-horizontal">
+        <div class="row d-flex align-items-center">
+            <div class="col-lg-3 col-md-3 col-sm-3 details d-flex">
+                <img width="128" height="128" src="~/UploadImg/@Model.contactvm.ImagePath" />
+            </div>
 
+            <div class="col-lg-4 col-md-4 col-sm-9 text-center">
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.Label("You can edit foto")<br />
+                        @Html.TextBox("file", "", new { type = "file" }) <br />
+                    </div>
+                </div>
+            </div>
+        </div>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @*<div class="form-group">
+                <div class="col-md-10">
+                    @Html.Label("You can edit foto")<br />
+                    @Html.TextBox("file", "", new { type = "file" }) <br />
+                </div>
+            </div>*@
+
+
         <div class="form-group">
             @Html.LabelFor(model => model.contactvm.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -38,15 +61,6 @@
                 @Html.ValidationMessageFor(model => model.contactvm.Email, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.contactvm.ImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.contactvm.ImagePath, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.contactvm.ImagePath, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
         <div class="form-group">
             @Html.LabelFor(model => model.contactvm.Address, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -85,27 +99,31 @@
             </div>
         </div>
         <div class="form-group" style="visibility: hidden;">
-
+            @Html.LabelFor(model => model.phonenumber1.PhoneNumberId, htmlAttributes: new { @class = "control-label col-md-2 " })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.phonenumber1.PhoneNumberId, new { htmlAttributes = new { @class = "form-control" } })
-
+                @Html.ValidationMessageFor(model => model.phonenumber1.PhoneNumberId, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group" style="visibility: hidden;">
-
+            @Html.LabelFor(model => model.phonenumber2.PhoneNumberId, htmlAttributes: new { @class = "control-label col-md-2 " })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.phonenumber2.PhoneNumberId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.phonenumber2.PhoneNumberId, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group" style="visibility: hidden;">
+            @Html.LabelFor(model => model.phonenumber3.PhoneNumberId, htmlAttributes: new { @class = "control-label col-md-2 " })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.phonenumber3.PhoneNumberId, new { htmlAttributes = new { @class = "form-control " } })
+                @Html.ValidationMessageFor(model => model.phonenumber2.PhoneNumberId, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group " style="visibility: hidden">
+        <div style="visibility: hidden">
+            @Html.LabelFor(model => model.contactvm.ContactId, htmlAttributes: new { @class = "control-label col-md-2 " })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.contactvm.ContactId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.contactvm.ContactId, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>

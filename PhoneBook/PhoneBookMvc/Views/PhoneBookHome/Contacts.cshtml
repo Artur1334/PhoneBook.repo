@@ -39,10 +39,10 @@
 {
     <div id="row_@item.ContactId">
         <hr style="border-bottom:1px solid #ffffff" />
-        <div class="public-user-block block">
+                <div class="public-user-block block">
             <div class="row d-flex align-items-center">
                 <div class="col-lg-4 col-mg-4 col-sm-9 d-flex align-items-center">
-                    <div class="avatar"> <img src="~/Content/img/avatar-1.jpg" alt="..." class="img-fluid"></div><p>
+                    <div class="avatar"> <img src="/UploadImg/@item.ImagePath" alt="not" class="img-fluid"></div><p>
                         <strong class="d-block">@item.FirstName  @item.LastName</strong><span class="d-block">@Html.DisplayFor(modelItem => item.Email)</span>
                     </p>
                 </div>

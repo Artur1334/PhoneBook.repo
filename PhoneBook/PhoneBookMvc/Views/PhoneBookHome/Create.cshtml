@@ -8,24 +8,18 @@
 <h2 style="text-align:center; border-bottom:1px solid #ff0000">NEW CONTACT</h2>
 <hr />
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "PhoneBookHome", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-
     <div class="form-horizontal">
-        @*<div class="form-group">
-            @Html.ValidationSummary()
-            @Html.Label("Icon")<br />
-            <img id="output" width="75" height="75" src="~/Content/img/avatar-5.jpg" />
-            @Html.TextBox("Ico", "", new { type = "file", onchange = "loadFile(event)", style = "visibility:hidden;" })
 
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-            <button type="button" class="btn_add btn btn-xs" onclick="document.getElementById('Ico').click()"><img class="middleIco" src="~/Content/Icons/change-ico.png" /> Change icon</button>
-
-            <button type="button" class="btn_cancel btn btn-xs" onclick="history.back()"><img class="smallIco" src="~/Content/Icons/cancel-ico.png" /> Cancel</button>
-        </div>*@
-
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.Label("IMG")<br />
+                @Html.TextBox("file", "", new { type = "file" }) <br />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+        </div>
         <div class="form-group">
             @Html.Label("Number", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -33,15 +27,6 @@
                 @Html.ValidationMessageFor(model => model.phonenumber1.Number, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.contactvm.ContactId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.contactvm.ContactId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.contactvm.ContactId, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
         <div class="form-group">
             @Html.LabelFor(model => model.contactvm.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -73,14 +58,6 @@
                 @Html.ValidationMessageFor(model => model.contactvm.Address, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.contactvm.ImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.contactvm.ImagePath, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.contactvm.ImagePath, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
         <p>You can add another phone numbers</p>
         <div class="form-group">
             @Html.Label("Number 2", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -105,5 +82,8 @@
         </div>
     </div>
 }
+
+
+
 
 
