@@ -61,6 +61,14 @@
     <Compile Include="Migrations\201710312122199_ChangePhoneNumber.Designer.cs">
       <DependentUpon>201710312122199_ChangePhoneNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711071837144_InsertContacts.cs" />
+    <Compile Include="Migrations\201711071837144_InsertContacts.Designer.cs">
+      <DependentUpon>201711071837144_InsertContacts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711071904405_InsertPhoneNumbers.cs" />
+    <Compile Include="Migrations\201711071904405_InsertPhoneNumbers.Designer.cs">
+      <DependentUpon>201711071904405_InsertPhoneNumbers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\PhoneNumber.cs" />
@@ -70,7 +78,9 @@
     <Compile Include="Services\IPhoneNumberReposirory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +92,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710312122199_ChangePhoneNumber.resx">
       <DependentUpon>201710312122199_ChangePhoneNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711071837144_InsertContacts.resx">
+      <DependentUpon>201711071837144_InsertContacts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711071904405_InsertPhoneNumbers.resx">
+      <DependentUpon>201711071904405_InsertPhoneNumbers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

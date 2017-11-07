@@ -32,6 +32,7 @@ namespace PhoneBookMvc.Controllers
         public ActionResult Contacts()
         {
             List<ContactViewModel> cantactsVM = _contactrepository.SelectAll().To_Contact_View_Model().ToList();
+
             return View(cantactsVM.OrderBy(a => a.FirstName));
         }
 
@@ -70,6 +71,7 @@ namespace PhoneBookMvc.Controllers
         public ActionResult NumberInfo(int? id)
         {
             List<PhoneNumber> _phonenumberlist = _phonenumberrepository.SelectAll().Where(d => d.ContactId == id).ToList();
+
             return View(_phonenumberlist);
         }
 
@@ -146,6 +148,7 @@ namespace PhoneBookMvc.Controllers
         }
 
         // POST: PhoneBookHomeController/Edit
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ContactCreateViewModel contactvmNew, HttpPostedFileBase file)
@@ -153,7 +156,7 @@ namespace PhoneBookMvc.Controllers
             try
             {
                 Contact _con = ContactsMapper.To_Contact_Create_ViewModel(contactvmNew);
-                if (file!=null)
+                if (file != null)
                 {
                     string _FileName = Path.GetFileName(file.FileName);
                     string _path = Path.Combine(Server.MapPath("~/UploadImg"), _FileName);
@@ -179,6 +182,7 @@ namespace PhoneBookMvc.Controllers
             return View(contactvmNew);
 
         }
+
         //  PhoneBookHomeController/Delete
 
         public JsonResult Delete(int? id)

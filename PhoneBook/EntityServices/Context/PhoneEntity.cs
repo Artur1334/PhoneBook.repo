@@ -8,9 +8,11 @@ namespace EntityServices
     public class PhoneEntity : DbContext
     {
         public DbSet<Contact> Contacts { get; set; }
+
         public DbSet<PhoneNumber> PhoneNumbers{ get; set; }
+
         public PhoneEntity()
-            : base("PhoneEntity")
+            : base("DefaultConnection")
         {
         }
 
