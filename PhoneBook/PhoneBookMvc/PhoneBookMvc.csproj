@@ -183,12 +183,12 @@
     <Content Include="Content\css\style.red.css" />
     <Content Include="Content\css\style.sea.css" />
     <Content Include="Content\css\style.violet.css" />
-    <Content Include="Content\img\avatar-1.jpg" />
-    <Content Include="Content\img\avatar-2.jpg" />
-    <Content Include="Content\img\avatar-3.jpg" />
-    <Content Include="Content\img\avatar-4.jpg" />
-    <Content Include="Content\img\avatar-5.jpg" />
-    <Content Include="Content\img\avatar-6.jpg" />
+    <Content Include="UploadImg\avatar-1.jpg" />
+    <Content Include="UploadImg\avatar-2.jpg" />
+    <Content Include="UploadImg\avatar-3.jpg" />
+    <Content Include="UploadImg\avatar-4.jpg" />
+    <Content Include="UploadImg\avatar-5.jpg" />
+    <Content Include="UploadImg\avatar-6.jpg" />
     <Content Include="Content\img\bg.jpeg" />
     <Content Include="Content\img\defaultIcon.png" />
     <Content Include="Content\img\favicon.ico" />
@@ -199,7 +199,6 @@
     <Content Include="Content\img\ic_search_white_24dp_1x.png" />
     <Content Include="Content\img\incoming-call %281%29.gif" />
     <Content Include="Content\img\load.gif" />
-    <Content Include="Content\img\template-mac.png" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -326,7 +325,6 @@
     <Folder Include="Content\vendor\font-awesome\less\" />
     <Folder Include="Content\vendor\font-awesome\scss\" />
     <Folder Include="Content\vendor\jquery.cookie\test\" />
-    <Folder Include="UploadImg\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

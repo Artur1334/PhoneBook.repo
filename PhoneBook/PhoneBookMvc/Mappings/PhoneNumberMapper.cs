@@ -9,6 +9,8 @@ namespace PhoneBookMvc.Mappings
 {
     public static class PhoneNumberMapper
     {
+        //PhonNumber--> PhoneNumverViewModel
+
         public static PhoneNumberViewModel To_PhoneNumber_view_model(this PhoneNumber pn)
         {
             PhoneNumberViewModel pnvm = new PhoneNumberViewModel()
@@ -19,6 +21,9 @@ namespace PhoneBookMvc.Mappings
             };
             return pnvm;
         }
+
+        //PhonNumber(LIST)--> ContactCreateViewModel
+
         public static List<PhoneNumber> To_PhoneNumber_Create_ViewModel(this ContactCreateViewModel contactcreate ,int val)
         {
             List<PhoneNumber> listcontact = new List<PhoneNumber>();
@@ -40,6 +45,7 @@ namespace PhoneBookMvc.Mappings
             return listcontact;
         }
 
+        //ContactCreateViewModel--> PhonNumber(LIST)
 
         public static ContactCreateViewModel To_Contact_Create_ViewModel(this List<PhoneNumber> contactcreate)
         {

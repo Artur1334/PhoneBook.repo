@@ -14,11 +14,13 @@ namespace InfrastructureData
     {
         private PhoneEntity _phoneentity;
         private DbSet<PhoneNumber> _dbset;
+
         public PhoneNumberReposirory()
         {
             this._phoneentity = new PhoneEntity();
             this._dbset = _phoneentity.Set<PhoneNumber>();
         }
+//CREAT
         public void Create(PhoneNumber phonnumber)
         {
             _dbset.Add(phonnumber);

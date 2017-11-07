@@ -163,6 +163,10 @@ namespace PhoneBookMvc.Controllers
                     _con.ImagePath = _FileName;
                     file.SaveAs(_path);
                 }
+                else
+                {
+                    _con.ImagePath = "images.png";
+                }
 
                 _contactrepository.Update(_con);
                 _contactrepository.Save();
