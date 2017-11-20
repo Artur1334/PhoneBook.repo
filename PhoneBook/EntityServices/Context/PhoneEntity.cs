@@ -11,6 +11,8 @@ namespace EntityServices
 
         public DbSet<PhoneNumber> PhoneNumbers{ get; set; }
 
+        public DbSet<Event> Events { get; set; }
+
         public PhoneEntity()
             : base("DefaultConnection")
         {

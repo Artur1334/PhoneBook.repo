@@ -31,6 +31,7 @@ namespace PhoneBookMvc.Ninject
 
             kernel.Bind<IContactRepository>().To<ContactRepository>();
             kernel.Bind<IPhoneNumberReposirory>().To<PhoneNumberReposirory>();
+            kernel.Bind<IEventRepository>().To<EventRepository>();
         }
     }
 }

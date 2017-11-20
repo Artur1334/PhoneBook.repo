@@ -1,32 +1,32 @@
-﻿using System;
+﻿using EntityServices.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Entity;
+using EntityServices.Models;
 using EntityServices;
+using System.Data.Entity;
 
 namespace InfrastructureData
 {
-    public class ContactRepository : IContactRepository
-
+    public class EventRepository : IEventRepository
     {
         private PhoneEntity _phoneentity;
-        private DbSet<Contact> _dbset;
+        private DbSet<Event> _dbset;
 
-        public ContactRepository()
+        public EventRepository()
         {
             this._phoneentity = new PhoneEntity();
-            this._dbset = _phoneentity.Set<Contact>();
+            this._dbset = _phoneentity.Set<Event>();
         }
-//CREATE
-        public void Create(Contact contact, ref int newid)
-        {
-            
-            _dbset.Add(contact);
-            _phoneentity.SaveChanges();
 
-           newid = contact.ContactId;
+        //CREATE
+        public void Create(Event ev)
+        {
+
+            _dbset.Add(ev);
+            _phoneentity.SaveChanges();
         }
 
         //SAVE
@@ -41,35 +41,34 @@ namespace InfrastructureData
                 throw exception;
             }
         }
-//SELECT
-        public Contact Select(int? id)
+
+        //SELECT
+        public Event Select(int? id)
         {
             return _dbset.Find(id);
         }
-//SELECTALL
-        public IEnumerable<Contact> SelectAll()
+
+        //SELECT ALL
+        public IEnumerable<Event> SelectAll()
         {
             return _dbset.ToList();
         }
-        
-//UPDATE
-        public void Update(Contact contact)
-        {
-            _dbset.Attach(contact);
 
-            _phoneentity.Entry(contact).State = EntityState.Modified;
+        public void Update(Event ev)
+        {
+            _dbset.Attach(ev);
+
+            _phoneentity.Entry(ev).State = EntityState.Modified;
         }
-//DELETE
         public void Delete(int? id)
         {
-            Contact DeleteInPhoneBook = _dbset.Find(id);
+            Event DeleteInPhoneBook = _dbset.Find(id);
             _dbset.Remove(DeleteInPhoneBook);
         }
-//DISPOSE
+
         public void Dispose()
         {
             GC.SuppressFinalize(this);
         }
-
     }
 }

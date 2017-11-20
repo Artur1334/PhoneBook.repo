@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityServices.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,6 +10,10 @@ namespace EntityServices
 {
     public class Contact
     {
+        public Contact()
+        {
+            this.Events = new HashSet<Event>();
+        }
         [Required]
         public int ContactId { get; set; }
 
@@ -27,5 +32,7 @@ namespace EntityServices
 
         [MaxLength(255)]
         public string Address { get; set; }
+
+        public virtual ICollection<Event> Events { get; set; }
     }
 }
